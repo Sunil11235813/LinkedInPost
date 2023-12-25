@@ -9,32 +9,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 90vh;
+            height: 122vh;
             margin: 0;
             background-color: #f4f4f4;
         }
 
         .container {
-            width: 700px;
-            height: 900px;
+            width: 1000px;
+            height: 750px;
             background-color: white;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 10px 10px 35px rgba(0, 0.1, 0.1, 0.3);
             border-radius: 15px;
             overflow-y: auto;
             padding: 20px;
+            animation: rainbowBorder 5s linear infinite;
+        }
+
+        @keyframes rainbowBorder {
+          0% {
+            box-shadow: inset 0 0 0 3px red;
+          }
+          25% {
+            box-shadow: inset 0 0 0 3px orange;
+          }
+          50% {
+            box-shadow: inset 0 0 0 3px yellow;
+          }
+          75% {
+            box-shadow: inset 0 0 0 3px green;
+          }
+          100% {
+            box-shadow: inset 0 0 0 3px blue;
+          }
         }
 
         /* Style for headings and subheadings */
         h1 {
             text-align: center;
-            font-size: 3em;
+            font-size: 2em;
             margin-bottom: 20px;
             color: #333;
             animation: fadeInUp 1s ease-in-out;
         }
 
         h2 {
-            font-size: 2em;
+            font-size: 1em;
             color: #555;
             animation: fadeInUp 1s ease-in-out;
         }
@@ -72,7 +91,8 @@
                 opacity: 1;
             }
         }
-            /* Blinking cursor */
+
+        /* Blinking cursor */
         .cursor::after {
           content: '|';
           animation: cursor 1s infinite;
@@ -83,95 +103,133 @@
           50% { opacity: 0; }
           100% { opacity: 1; }
         }
+
+        /* Style for play button */
+        .play-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-button img {
+            width: 70%;
+            height: auto;
+        }
+
+        .play-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Data-Driven Approach for LinkedIn</h1>        
         <h2>1. Getting Started:</h2>
-        <pre id="codeSnippet1">
-
-        </pre>
+        <pre id="codeSnippet1"></pre>
 
         <h2>2. Connect to LinkedIn API:</h2>
-        <pre id="codeSnippet2">
-
-        </pre>
+        <pre id="codeSnippet2"></pre>
 
         <h2>3. Retrieve and Analyze Posts:</h2>
-        <pre id="codeSnippet3">
-
-        </pre>
+        <pre id="codeSnippet3"></pre>
 
         <h2>4. Analyze Post Performance:</h2>
-        <pre id="codeSnippet4">
-
-        </pre>
+        <pre id="codeSnippet4"></pre>
 
         <h2>5. Extract Insights:</h2>
-        <pre id="codeSnippet5">
-
-        </pre>
+        <pre id="codeSnippet5"></pre>
 
         <h2>6. Generate Recommendations:</h2>
-        <pre id="codeSnippet6">
-
-        </pre>
+        <pre id="codeSnippet6"></pre>
 
         <h2>7. Conclusion:</h2>
         <p>
             With data-driven insights from your LinkedIn posts, you can optimize your networking strategy, increase engagement, and build more meaningful connections. Embrace this data-driven approach to reach your professional goals on LinkedIn.
         </p>
     </div>
-            <script>
-                    // JavaScript code
-                    const codeSnippets = [
-                      "\nimport linkedin\nfrom linkedin import Post\nfrom datetime import datetime",
-                      "\napi_key = 'YOUR_LINKEDIN_API_KEY'\napi_secret = 'YOUR_LINKEDIN_API_SECRET'\nauthentication = linkedin.LinkedInAuthentication(api_key, api_secret)\napplication = linkedin.LinkedInApplication(authentication)",
-                      "\nposts = application.get_posts()\nfor post in posts:\n    print(post.title)\n    print(post.author)\n    print(post.created_at)\n    print(post.num_likes)\n    print(post.num_comments)",
-                      "\npost_stats = {}\nfor post in posts:\n    post_stats[post.id] = {\n        'title': post.title,\n        'author': post.author,\n        'created_at': post.created_at,\n        'num_likes': post.num_likes,\n        'num_comments': post.num_comments\n    }",
-                      "\ntop_posts = sorted(post_stats.values(), key=lambda x: x['num_likes'] + x['num_comments'], reverse=True)[:5]",
-                      "\n# Based on your analysis, suggest improvements to your LinkedIn strategy:\n# Recommend adjusting posting frequency or timing.\n# Propose diversifying content types or adjusting topics.\n# Identify target audiences for your posts.",
-                      "With data-driven insights from your LinkedIn posts, you can optimize your networking strategy, increase engagement, and build more meaningful connections. Embrace this data-driven approach to reach your professional goals on LinkedIn."
-                    ];
 
-                  function typeWriterEffect(text, index) {
-                    const codeSnippet = document.getElementById(`codeSnippet${index}`);
-                    codeSnippet.style.display = 'block'; // Show the code snippet
+    <script>
+        // JavaScript code
+        const codeSnippets = [
+          "\nimport linkedin\nfrom linkedin import Post\nfrom datetime import datetime",
+          "\napi_key = 'YOUR_LINKEDIN_API_KEY'\napi_secret = 'YOUR_LINKEDIN_API_SECRET'\nauthentication = linkedin.LinkedInAuthentication(api_key, api_secret)\napplication = linkedin.LinkedInApplication(authentication)",
+          "\nposts = application.get_posts()\nfor post in posts:\n    print(post.title)\n    print(post.author)\n    print(post.created_at)\n    print(post.num_likes)\n    print(post.num_comments)",
+          "\npost_stats = {}\nfor post in posts:\n    post_stats[post.id] = {\n        'title': post.title,\n        'author': post.author,\n        'created_at': post.created_at,\n        'num_likes': post.num_likes,\n        'num_comments': post.num_comments\n    }",
+          "\ntop_posts = sorted(post_stats.values(), key=lambda x: x['num_likes'] + x['num_comments'], reverse=True)[:5]",
+          "\n# Based on your analysis, suggest improvements to your LinkedIn strategy:\n# Recommend adjusting posting frequency or timing.\n# Propose diversifying content types or adjusting topics.\n# Identify target audiences for your posts.",
+          "With data-driven insights from your LinkedIn posts, you can optimize your networking strategy, increase engagement, and build more meaningful connections. Embrace this data-driven approach to reach your professional goals on LinkedIn."
+        ];
 
-                    function startAnimation() {
-                      let i = 0;
-                      function type() {
-                        if (i < text.length) {
-                          codeSnippet.textContent += text.charAt(i);
-                          i++;
+        const generatedButtons = {}; // To track generated buttons
 
-                          // Adjust text alignment during the animation
-                          if (i === text.length) {
-                            codeSnippet.style.textAlign = 'justify';
-                            codeSnippet.style.textAlignLast = 'left';
-                          }
+        function typeWriterEffect(text, index) {
+          const codeSnippet = document.getElementById(`codeSnippet${index}`);
+          codeSnippet.style.display = 'block'; // Show the code snippet
 
-                          setTimeout(type, 50);
-                        }
-                      }
+          function startAnimation() {
+            let i = 0;
+            function type() {
+              if (i < text.length) {
+                codeSnippet.textContent += text.charAt(i);
+                i++;
 
-                      type();
-                    }
+                // Adjust text alignment during the animation
+                if (i === text.length && !generatedButtons[index]) {
+                  codeSnippet.style.textAlign = 'justify';
+                  codeSnippet.style.textAlignLast = 'left';
+                  createSpeakButton(index); // Call createSpeakButton function when the snippet finishes
+                  generatedButtons[index] = true; // Mark button as generated for this snippet
+                }
 
-                    function resetAnimation() {
-                      codeSnippet.textContent = ''; // Reset the text content
-                      codeSnippet.style.textAlign = 'center'; // Revert text alignment to center
-                      setTimeout(startAnimation, 30000); // 5 minutes delay (300,000 milliseconds)
-                    }
+                setTimeout(type, 50);
+              }
+            }
 
-                    startAnimation();
-                    setInterval(resetAnimation, 30000); // Start the loop after 5 minutes
-                  }
+            type();
+          }
 
-                  for (let i = 1; i <= codeSnippets.length; i++) {
-                    typeWriterEffect(codeSnippets[i - 1], i);
-                  }
-        </script>
-    </body>
+          function resetAnimation() {
+            codeSnippet.textContent = ''; // Reset the text content
+            codeSnippet.style.textAlign = 'center'; // Revert text alignment to center
+            setTimeout(startAnimation, 30000); // 5 minutes delay (300,000 milliseconds)
+          }
+
+          startAnimation();
+          setInterval(resetAnimation, 30000); // Start the loop after 5 minutes
+        }
+
+        function speakCode(index) {
+          const textToSpeak = codeSnippets[index - 1];
+          const speechSynthesis = window.speechSynthesis;
+          const utterance = new SpeechSynthesisUtterance();
+          utterance.text = textToSpeak;
+
+          speechSynthesis.speak(utterance);
+        }
+
+        function createSpeakButton(index) {
+          const codeSnippet = document.getElementById(`codeSnippet${index}`);
+          const button = document.createElement('button');
+          button.className = 'play-button';
+          button.innerHTML = '<img src="https://img.icons8.com/material-sharp/24/ffffff/play--v1.png"/>';
+          button.onclick = function() {
+            speakCode(index);
+          };
+          codeSnippet.insertAdjacentElement('afterend', button);
+        }
+        
+        for (let i = 1; i <= codeSnippets.length; i++) {
+          typeWriterEffect(codeSnippets[i - 1], i);
+        }
+    </script>
+</body>
 </html>
