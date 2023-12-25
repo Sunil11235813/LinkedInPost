@@ -53,13 +53,14 @@
 
         /* Style for code snippets */
         pre {
-            background-color: #000;
-            color: #fff;
+            background-color: black;
+            font-family: monospace;
+            color: #00FF00; /* Terminal-like text color */
             padding: 15px;
             overflow-x: auto;
-            border-radius: 5px;
-            font-family: Consolas, monospace;
+            border-radius: 5px;            
             animation: fadeIn 1s ease-in-out;
+            text-align: justify;
         }
 
         /* CSS animation for code snippets */
@@ -71,68 +72,106 @@
                 opacity: 1;
             }
         }
+            /* Blinking cursor */
+        .cursor::after {
+          content: '|';
+          animation: cursor 1s infinite;
+        }
+
+        @keyframes cursor {
+          0% { opacity: 1; }
+          50% { opacity: 0; }
+          100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Data-Driven Approach for LinkedIn</h1>
-        
+        <h1>Data-Driven Approach for LinkedIn</h1>        
         <h2>1. Getting Started:</h2>
-        <pre><code>
-import linkedin
-from linkedin import Post
-from datetime import datetime
-        </code></pre>
+        <pre id="codeSnippet1">
+
+        </pre>
 
         <h2>2. Connect to LinkedIn API:</h2>
-        <pre><code>
-api_key = 'YOUR_LINKEDIN_API_KEY'
-api_secret = 'YOUR_LINKEDIN_API_SECRET'
+        <pre id="codeSnippet2">
 
-authentication = linkedin.LinkedInAuthentication(api_key, api_secret)
-application = linkedin.LinkedInApplication(authentication)
-        </code></pre>
+        </pre>
 
         <h2>3. Retrieve and Analyze Posts:</h2>
-        <pre><code>
-posts = application.get_posts()
-for post in posts:
-    print(post.title)
-    print(post.author)
-    print(post.created_at)
-    print(post.num_likes)
-    print(post.num_comments)
-        </code></pre>
+        <pre id="codeSnippet3">
+
+        </pre>
 
         <h2>4. Analyze Post Performance:</h2>
-        <pre><code>
-post_stats = {}
-for post in posts:
-    post_stats[post.id] = {
-        'title': post.title,
-        'author': post.author,
-        'created_at': post.created_at,
-        'num_likes': post.num_likes,
-        'num_comments': post.num_comments}
-        </code></pre>
+        <pre id="codeSnippet4">
+
+        </pre>
 
         <h2>5. Extract Insights:</h2>
-        <pre><code>
-top_posts = sorted(post_stats.values(), key=lambda x: x['num_likes'] + x['num_comments'], reverse=True)[:5]
-        </code></pre>
+        <pre id="codeSnippet5">
+
+        </pre>
 
         <h2>6. Generate Recommendations:</h2>
-        <pre><code>
-# Based on your analysis, suggest improvements to your LinkedIn strategy:
-# Recommend adjusting posting frequency or timing.
-# Propose diversifying content types or adjusting topics.
-# Identify target audiences for your posts.
-        </code></pre>
+        <pre id="codeSnippet6">
+
+        </pre>
 
         <h2>7. Conclusion:</h2>
         <p>
             With data-driven insights from your LinkedIn posts, you can optimize your networking strategy, increase engagement, and build more meaningful connections. Embrace this data-driven approach to reach your professional goals on LinkedIn.
         </p>
     </div>
-</body>
+            <script>
+                    // JavaScript code
+                    const codeSnippets = [
+                      "\nimport linkedin\nfrom linkedin import Post\nfrom datetime import datetime",
+                      "\napi_key = 'YOUR_LINKEDIN_API_KEY'\napi_secret = 'YOUR_LINKEDIN_API_SECRET'\nauthentication = linkedin.LinkedInAuthentication(api_key, api_secret)\napplication = linkedin.LinkedInApplication(authentication)",
+                      "\nposts = application.get_posts()\nfor post in posts:\n    print(post.title)\n    print(post.author)\n    print(post.created_at)\n    print(post.num_likes)\n    print(post.num_comments)",
+                      "\npost_stats = {}\nfor post in posts:\n    post_stats[post.id] = {\n        'title': post.title,\n        'author': post.author,\n        'created_at': post.created_at,\n        'num_likes': post.num_likes,\n        'num_comments': post.num_comments\n    }",
+                      "\ntop_posts = sorted(post_stats.values(), key=lambda x: x['num_likes'] + x['num_comments'], reverse=True)[:5]",
+                      "\n# Based on your analysis, suggest improvements to your LinkedIn strategy:\n# Recommend adjusting posting frequency or timing.\n# Propose diversifying content types or adjusting topics.\n# Identify target audiences for your posts.",
+                      "With data-driven insights from your LinkedIn posts, you can optimize your networking strategy, increase engagement, and build more meaningful connections. Embrace this data-driven approach to reach your professional goals on LinkedIn."
+                    ];
+
+                  function typeWriterEffect(text, index) {
+                    const codeSnippet = document.getElementById(`codeSnippet${index}`);
+                    codeSnippet.style.display = 'block'; // Show the code snippet
+
+                    function startAnimation() {
+                      let i = 0;
+                      function type() {
+                        if (i < text.length) {
+                          codeSnippet.textContent += text.charAt(i);
+                          i++;
+
+                          // Adjust text alignment during the animation
+                          if (i === text.length) {
+                            codeSnippet.style.textAlign = 'justify';
+                            codeSnippet.style.textAlignLast = 'left';
+                          }
+
+                          setTimeout(type, 50);
+                        }
+                      }
+
+                      type();
+                    }
+
+                    function resetAnimation() {
+                      codeSnippet.textContent = ''; // Reset the text content
+                      codeSnippet.style.textAlign = 'center'; // Revert text alignment to center
+                      setTimeout(startAnimation, 30000); // 5 minutes delay (300,000 milliseconds)
+                    }
+
+                    startAnimation();
+                    setInterval(resetAnimation, 30000); // Start the loop after 5 minutes
+                  }
+
+                  for (let i = 1; i <= codeSnippets.length; i++) {
+                    typeWriterEffect(codeSnippets[i - 1], i);
+                  }
+        </script>
+    </body>
 </html>
