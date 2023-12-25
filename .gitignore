@@ -1,0 +1,40 @@
+# OS generated files #
+.DS_Store                  # macOS system files
+Thumbs.db                  # Windows thumbnail cache files
+ehthumbs.db                # Windows Explorer thumbnail cache files
+*.swp                      # Vim swap files
+*.swo                      # Vim session files
+._*                        # Files created by some text editors on macOS
+
+# Compiled or generated files #
+*.o                        # Object files
+*.pyc                      # Python compiled files
+*.class                    # Java class files
+*.jar                      # Java archive files
+*.war                      # Web application archive files
+*.ear                      # Enterprise archive files
+*.exe                      # Executable files
+*.dll                      # Windows dynamic link library files
+*.so                       # Shared object files (Linux)
+
+# Dependency directories #
+/node_modules/
+/bower_components/
+
+# Logs and databases #
+*.log                      # Log files
+*.sql                      # SQL database files
+*.sqlite                   # SQLite database files
+
+# IDE or editor-specific files #
+.idea/                     # JetBrains IntelliJ IDEA
+.vscode/                   # Visual Studio Code
+*.sublime-project          # Sublime Text project files
+*.sublime-workspace        # Sublime Text workspace files
+
+# Compiled languages #
+*.out                      # Compiled output files
+
+# macOS aliases #
+.AppleDouble
+.AppleDesktop
